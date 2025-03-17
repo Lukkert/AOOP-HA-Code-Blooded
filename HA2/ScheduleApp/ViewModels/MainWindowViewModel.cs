@@ -1,6 +1,14 @@
-﻿namespace ScheduleApp.ViewModels;
+﻿using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 
-public partial class MainWindowViewModel : ViewModelBase
+namespace ScheduleApp.ViewModels;
+
+public partial class MainWindowViewModel : ViewModelBase //-- INotifyPropertyChanged from System.ComponentModel --EventHandler 
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    [ObservableProperty]
+    public bool studentRadioButton = false;
+    [ObservableProperty]
+    public bool teacherRadioButton = false;
+
+    
 }

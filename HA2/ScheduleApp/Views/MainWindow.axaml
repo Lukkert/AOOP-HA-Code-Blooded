@@ -15,6 +15,15 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <Grid>
+        <StackPanel Margin="10,10,-10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!--x:Name="LoginPanel"-->
+            <TextBlock Text="Login" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+            <RadioButton GroupName="StudentButton" Content="Student" IsChecked="{Binding StudentRadioButton}"/>
+            <RadioButton GroupName="StudentButton" Content="Teacher" IsChecked="{Binding TeacherRadioButton}" Margin="0,5,0,0"/>
+            
+            <TextBox x:Name="LoginPanel" Watermark="Username" Margin="0,5,0,0" />
+            <TextBox PasswordChar="*" Watermark="Password" Margin="0,5,0,0" />
+        </StackPanel>
+    </Grid>
 </Window>

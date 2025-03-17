@@ -4,4 +4,5 @@ namespace ScheduleApp.ViewModels;
 
 public class ViewModelBase : ObservableObject
 {
+    
 }
