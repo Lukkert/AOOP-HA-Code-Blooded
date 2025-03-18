@@ -4,7 +4,7 @@ using Avalonia.Markup.Xaml;
 
 namespace HA2.ScheduleApp.ViewModels;
 
-public partial class StudentView : Window
+public partial class StudentView : UserControl
 {
     public StudentView()
     {

@@ -3,14 +3,14 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace HA2.ScheduleApp.ViewModels;
+namespace HA2.ScheduleApp.Views;
 
-public partial class TeacherView : UserControl
+public partial class LoginWindow : UserControl
 {
-    public TeacherView()
+    public LoginWindow()
     {
         InitializeComponent();
     }
 
-    
+
 }
