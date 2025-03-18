@@ -2,11 +2,11 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace HA2.ScheduleApp.Views;
+namespace HA2.ScheduleApp.ViewModels;
 
-public partial class AvailableSubjects : Window
+public partial class TeacherView : Window
 {
-    public AvailableSubjects()
+    public TeacherView()
     {
         InitializeComponent();
     }
