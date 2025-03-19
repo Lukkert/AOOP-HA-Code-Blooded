@@ -7,5 +7,31 @@
         x:DataType="vm:StudentViewModel"
         x:Class="ScheduleApp.Views.StudentView"
         >
-This is Students View
+        <Grid RowDefinitions="Auto,*">
+                <Grid Grid.Row="0" Background="#3141CF" Height="50" ColumnDefinitions="Auto,Auto">
+                        <Button Grid.Column="0" Margin="10" Width="100" Background="Red" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">Log Out</Button>
+                        <TextBlock Grid.Column="1" Margin="10" VerticalAlignment="Center" FontWeight="Bold" FontSize="15">Student</TextBlock> 
+                </Grid>
+                <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Background="Gray">
+                        <!--1st Column-->
+                        <Grid Grid.Column="0" RowDefinitions="*,*,*" Background="White" ShowGridLines="True">
+                                <Rectangle Grid.Row="0"/>
+                                <Rectangle Grid.Row="1"/>
+                                <Rectangle Grid.Row="2"/>
+                        </Grid>
+
+
+                        <!--2nd Column-->
+                        <Grid Grid.Column="1" Background="Gray">
+                                <Rectangle Height="300" Fill="White" Margin="10,0,10,0">
+                                </Rectangle>
+                        </Grid>
+                        <!--3rd Column-->
+                        <Grid Grid.Column="2" RowDefinitions="*,*,*" Background="White" ShowGridLines="True">
+                                <Rectangle Grid.Row="0"/>
+                                <Rectangle Grid.Row="1"/>
+                                <Rectangle Grid.Row="2"/>
+                        </Grid>
+                </Grid>
+        </Grid>
 </UserControl>
