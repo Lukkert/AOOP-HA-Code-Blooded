@@ -1,6 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:ScheduleApp.ViewModels"
+        xmlns:vm="using:HA2.ScheduleApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -15,22 +15,7 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Grid>
-        <StackPanel Margin="10,10,-10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <!--x:Name="LoginPanel"-->
-            <TextBlock Text="Login" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-            
-            
-            <TextBox x:Name="LoginPanel" Watermark="Username" Margin="0,5,0,0" />
-            <TextBox PasswordChar="*" Watermark="Password" Margin="0,5,0,0" />
-            <Button Content="Login" Command="{Binding AttemptLogin}"/>
-            <Button Content="StudentView" Command="{Binding NavigateToStudentView}"/>
-            <Button Content="TeacherView" Command="{Binding NavigateToTeacherView}"/>
-            
-        </StackPanel>
-    </Grid>
-    <Grid Grid.Row="1" ColumnDefinitions="auto,*">
+    
 			<!-- Main content Area -->
-			<ContentControl Grid.Column="1" Content="{Binding CurrentContent}" ZIndex="0"/>
-	</Grid>
+			<ContentControl Content="{Binding CurrentView}"/>
 </Window>

@@ -11,10 +11,7 @@ namespace ScheduleApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase //-- INotifyPropertyChanged from System.ComponentModel --EventHandler 
 {
-    public Window window;
 
-    [ObservableProperty]
-        private object? currentContent;
 
     [ObservableProperty]
     private UserControl currentView;
@@ -22,7 +19,6 @@ public partial class MainWindowViewModel : ViewModelBase //-- INotifyPropertyCha
     private StudentView _studentView = new StudentView{DataContext=new StudentViewModel()};
     private TeacherView _teacherView = new TeacherView{DataContext=new TeacherViewModel()};
     private LoginWindow _loginWindow = new LoginWindow{DataContext=new LoginWindowViewModel()};
-    private MainWindow _mainWindow = new MainWindow{DataContext=new MainWindowViewModel()};
 
     //public IRelayCommand OpenTeacherViewCommand { get; }
     //public IRelayCommand OpenStudentViewCommand { get; }

@@ -8,15 +8,12 @@ namespace HA2.ScheduleApp.Views;
 
 public partial class TeacherView : UserControl
 {
-    private TeacherViewModel ViewModel => (TeacherViewModel)DataContext;
     public TeacherView()
     
     {
         InitializeComponent();
+        
     }
 
-    private Window GetWindow()
-        {
-            return (Window)this.VisualRoot;
-        }
+    
 }
