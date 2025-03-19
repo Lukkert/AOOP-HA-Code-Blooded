@@ -9,8 +9,33 @@
         >
 
   <Grid RowDefinitions="Auto,*">
-    <Grid Grid.Row="0" Background="Orange" Height="50" ColumnDefinitions="Auto,Auto">
-    </Grid>
-  </Grid>
+                <Grid Grid.Row="0" Background="#3141CF" Height="50" ColumnDefinitions="Auto,Auto">
+                        <Button Grid.Column="0" Margin="10" Width="100" Background="Red" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">Log Out</Button>
+                        <TextBlock Grid.Column="1" Margin="10" VerticalAlignment="Center" FontWeight="Bold" FontSize="15">Teacher</TextBlock> 
+                </Grid>
+                <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Background="Gray">
+                        <!--1st Column-->
+                        <Grid Grid.Column="0" RowDefinitions="*,*,*" Background="White" ShowGridLines="True">
+                                <Rectangle Grid.Row="0"/>
+                                <Rectangle Grid.Row="1"/>
+                                <Rectangle Grid.Row="2"/>
+                        </Grid>
+
+
+                        <!--2nd Column-->
+                        <Grid Grid.Column="1" Background="Gray">
+                                <StackPanel>
+                                        <TextBlock Text="Subject Name" FontSize="20" FontWeight="Bold" Margin="10"/>
+                                        <TextBlock Text="Subject Description" FontSize="15" Margin="10"/>
+                                </StackPanel>
+                        </Grid>
+                        <!--3rd Column-->
+                        <Grid Grid.Column="2" RowDefinitions="*,*,*" Background="White" ShowGridLines="True">
+                                <Rectangle Grid.Row="0"/>
+                                <Rectangle Grid.Row="1"/>
+                                <Button Content="Add Subject" Margin="10" Grid.Row="2"/>
+                        </Grid>
+                </Grid>
+        </Grid>
 
 </UserControl>
