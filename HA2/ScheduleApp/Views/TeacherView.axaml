@@ -7,5 +7,10 @@
         xmlns:vm="using:ScheduleApp.ViewModels"
         x:Class="ScheduleApp.Views.TeacherView"
         >
-  This is Teachers View
+
+  <Grid RowDefinitions="Auto,*">
+    <Grid Grid.Row="0" Background="Orange" Height="50" ColumnDefinitions="Auto,Auto">
+    </Grid>
+  </Grid>
+
 </UserControl>
