@@ -1,17 +1,20 @@
-﻿using System;
-using ScheduleApp.ViewModels;
-using ScheduleApp.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using ScheduleApp.ViewModels;
 using CommunityToolkit.Mvvm.Input;
+using System;
+using ScheduleApp.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace HA2.ScheduleApp.ViewModels;
 
 public partial class LoginWindowViewModel : ViewModelBase
 {
+    [ObservableProperty]
+    private string? loginContentTest;
 
     [RelayCommand]
     public void AttemptLogin()
     {
+        Console.WriteLine(LoginContentTest);
         return;
     }
     

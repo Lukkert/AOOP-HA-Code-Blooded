@@ -1,0 +1,19 @@
+{
+  "Teachers": [
+    {
+      "Subjects": [],
+      "Id": 1,
+      "Name": "John",
+      "Password": "ILikeTrains"
+    }
+  ],
+  "Students": [
+    {
+      "EnrolledSubjects": [],
+      "Id": 2,
+      "Name": "Klaus",
+      "Password": "HoHoHo"
+    }
+  ],
+  "Subjects": []
+}
