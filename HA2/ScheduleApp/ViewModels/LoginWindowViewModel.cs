@@ -9,13 +9,13 @@ namespace HA2.ScheduleApp.ViewModels;
 public partial class LoginWindowViewModel : ViewModelBase
 {
     [ObservableProperty]
-    private string? loginContentTest;
+    private string? username;
 
     [RelayCommand]
     public void AttemptLogin()
     {
-        Console.WriteLine(LoginContentTest);
+        Console.WriteLine(Username);
         return;
     }
-    
+
 }
