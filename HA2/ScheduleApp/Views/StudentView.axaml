@@ -14,17 +14,32 @@
                 </Grid>
                 <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Background="Gray">
                         <!--1st Column-->
-                        <Grid Grid.Column="0" RowDefinitions="*,*,*" Background="White" ShowGridLines="True">
-                                <Rectangle Grid.Row="0"/>
-                                <Rectangle Grid.Row="1"/>
-                                <Rectangle Grid.Row="2"/>
+                        <Grid Grid.Column="0" RowDefinitions="Auto,*,*" Background="White" ShowGridLines="True">
+                                <!--Top-->
+                                <StackPanel Grid.Row="0" Orientation="Horizontal" Height="100">
+                                        <Rectangle Height="50" Width="50" Margin="10,10,10,50" Fill="Black"/>
+                                        <TextBlock Text="Name" Foreground="Black" Background="Gray" Margin="0,20,10,10" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="12"/>
+                                </StackPanel>
+                                <!--Middle-->
+                                <StackPanel Grid.Row="1">
+                                        <TextBlock Text="Enrolled Subjects" FontWeight="Bold" Margin="10"/>
+
+                                </StackPanel>
+                                <!--Bottom-->
+                                <Button Grid.Row="2" Content="Dropout" Margin="10" Background="Red" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                         </Grid>
 
 
                         <!--2nd Column-->
                         <Grid Grid.Column="1" Background="Gray">
-                                <Rectangle Height="300" Fill="White" Margin="10,0,10,0">
-                                </Rectangle>
+                                <StackPanel>
+                                        <TextBlock Text="Name" Foreground="Black" Background="Gray" Margin="10,5,0,0" FontWeight="Bold" FontSize="12"/>
+                                        <TextBlock Text="Teacher" Foreground="Black" Background="Gray" Margin="10,5,0,0" FontWeight="Bold" FontSize="12"/>
+                                        <TextBlock Text="Description" Foreground="Black" Background="Gray" Margin="10,5,0,0" FontWeight="Bold" FontSize="12"/>
+                                        <TextBlock Text="Enrolled Students" Foreground="Black" Background="Gray" Margin="10,5,0,0" FontWeight="Bold" FontSize="12"/>
+                                        <Rectangle Height="350" Fill="White" Margin="10"/>
+                                </StackPanel>
+                                
                         </Grid>
                         <!--3rd Column-->
                         <Grid Grid.Column="2" RowDefinitions="*,*,*" Background="White" ShowGridLines="True">
