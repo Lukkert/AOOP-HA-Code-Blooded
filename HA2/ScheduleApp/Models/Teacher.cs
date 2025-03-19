@@ -3,14 +3,21 @@ using ScheduleApp.Interfaces;
 
 namespace ScheduleApp.Models;
 
-public class Teacher(int Id, string Name, string Password) : IUser
+public class Teacher(string Name, string Password) : IUser
 {
-    public int Id { get; set; } = Id;
+    private static int _lastId = 1;
+    public int Id { get; set; } = _lastId++;
     public string Name { get; set; } = Name;
     public string Password { get; set; } = Password;
 
     public List<Subject>? Subjects { get; set; } = [];
 
+    // Factory method for creating new teachers (with hashing)
+    // You need this, because you don't want to rehash the password again when loading data.
+    public static Teacher Create(string name, string password)
+    {
+        return new Teacher(name, AuthService.HashPassword(password));
+    }
     public override string ToString()
     {
         return $"Name: {Name}, Role: Teacher";

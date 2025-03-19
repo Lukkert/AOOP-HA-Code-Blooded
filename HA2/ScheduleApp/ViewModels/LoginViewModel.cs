@@ -28,7 +28,7 @@ public partial class LoginViewModel : ViewModelBase
                 ViewSwitch.Invoke("StudentView");
                 break;
             default:
-                Console.WriteLine("What happened here?");
+                Console.WriteLine("User does not exist");
                 break;
         }
         Console.WriteLine($"Current User - {AuthService.CurrentUser}");
