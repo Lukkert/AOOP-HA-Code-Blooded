@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HA2.ScheduleApp.ViewModels;
 using HA2.ScheduleApp.Views;
+using ScheduleApp.Models;
 
 namespace ScheduleApp.ViewModels;
 
@@ -20,6 +21,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
+        InitializeData();
         CurrentView = _loginWindow;
     }
 
@@ -36,6 +38,10 @@ public partial class MainWindowViewModel : ViewModelBase
         CurrentView = _studentView;
     }
 
+    private void InitializeData()
+    {
+        DataStore.Load();
+    }
 
 }
 
