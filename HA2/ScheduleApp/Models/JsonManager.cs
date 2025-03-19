@@ -1,25 +1,35 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.Json;
 namespace ScheduleApp.Models
 {
     public class JsonManager
     {
-            public class DataStore
-        {
+        
         private const string FilePath = "UserData.json";
-        public List<Users.Student> Students { get; set; } = new();
-        public List<Users.Teacher> Teachers { get; set; } = new();
-        public List<Subjects.Subject> Subjects { get; set; } = new();
+        public List<Student> Students { get; set; } = new();
+        public List<Teacher> Teachers { get; set; } = new();
+        //public List<Subject> Subjects { get; set; } = new();
 
         
-        public void Save() => File.WriteAllText(FilePath, JsonSerializer.Serialize(this));
-        public static DataStore Load() => File.Exists(FilePath) ? JsonSerializer.Deserialize<DataStore>(File.ReadAllText(FilePath)) : new DataStore();
+
+        public void Save() // From Exercise
+         {
+             File.WriteAllText(FilePath, JsonSerializer.Serialize(Teachers));
+             File.WriteAllText(FilePath, JsonSerializer.Serialize(Students));
+         }
+
+         public ObservableCollection<User> Load(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                return new ObservableCollection<User>();
+            }
+            return JsonSerializer.Deserialize<ObservableCollection<User>>(File.ReadAllText(filename))!;
         }
 
-     // public void Save(string filename, ObservableCollection<Login> data) // From Exercise
-     //     {
-     //         File.WriteAllText(filename, JsonSerializer.Serialize(data));
-     //     }
+
+        
     }
 }
