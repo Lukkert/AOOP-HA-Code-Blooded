@@ -4,8 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:DataType="vm:TeacherViewModel"
-        xmlns:vm="using:HA2.ScheduleApp.ViewModels"
-        x:Class="HA2.ScheduleApp.Views.TeacherView"
+        xmlns:vm="using:ScheduleApp.ViewModels"
+        x:Class="ScheduleApp.Views.TeacherView"
         >
   This is Teachers View
 </UserControl>

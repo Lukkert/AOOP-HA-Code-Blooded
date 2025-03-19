@@ -1,14 +1,11 @@
-﻿using ScheduleApp.ViewModels;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using System;
 using ScheduleApp.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
-using System.Linq;
-using Avalonia.Controls;
 
-namespace HA2.ScheduleApp.ViewModels;
+namespace ScheduleApp.ViewModels;
 
-public partial class LoginWindowViewModel : ViewModelBase
+public partial class LoginViewModel : ViewModelBase
 {
     [ObservableProperty]
     private string? username;
@@ -23,14 +20,14 @@ public partial class LoginWindowViewModel : ViewModelBase
         {
             if (Username == teacher.Name && Password == teacher.Password)
             {
-                Console.WriteLine(teacher);
+                ViewSwitcher.SwitchView("TeacherView");
             }
         }
         foreach (var student in DataStore.Students)
         {
             if (Username == student.Name && Password == student.Password)
             {
-                Console.WriteLine(student);
+                ViewSwitcher.SwitchView("StudentView");
             }
         }
         return;

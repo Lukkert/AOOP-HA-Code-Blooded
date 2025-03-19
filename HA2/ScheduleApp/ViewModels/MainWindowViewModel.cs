@@ -1,8 +1,7 @@
 ﻿using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HA2.ScheduleApp.ViewModels;
-using HA2.ScheduleApp.Views;
+using ScheduleApp.Views;
 using ScheduleApp.Models;
 
 namespace ScheduleApp.ViewModels;
@@ -16,13 +15,16 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private StudentView _studentView = new StudentView { DataContext = new StudentViewModel() };
     private TeacherView _teacherView = new TeacherView { DataContext = new TeacherViewModel() };
-    private LoginWindow _loginWindow = new LoginWindow { DataContext = new LoginWindowViewModel() };
+    private LoginView _loginView = new LoginView { DataContext = new LoginViewModel() };
 
 
     public MainWindowViewModel()
     {
-        InitializeData();
-        CurrentView = _loginWindow;
+        CurrentView = _loginView;
+
+        DataStore.Load();
+
+        ViewSwitcher.OnViewChange += HandleViewChange;
     }
 
     [RelayCommand]
@@ -38,13 +40,27 @@ public partial class MainWindowViewModel : ViewModelBase
         CurrentView = _studentView;
     }
 
-    private void InitializeData()
+        public void NavigateToLoginView()
     {
-        DataStore.Load();
+        CurrentView = _loginView;
+    }
+
+    private void HandleViewChange(string viewName)
+    {
+        switch (viewName)
+        {
+            case "StudentView":
+                NavigateToStudentView();
+                break;
+            case "TeacherView":
+                NavigateToTeacherView();
+                break;
+            case "LoginView":
+                NavigateToLoginView();
+                break;
+            default:
+                break;
+        }
     }
 
 }
-
-
-
-

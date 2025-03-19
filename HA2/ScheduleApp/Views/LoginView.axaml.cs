@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace ScheduleApp.Views;
 
-public partial class StudentView : UserControl
+public partial class LoginView : UserControl
 {
-    public StudentView()
+    public LoginView()
     {
         InitializeComponent();
     }

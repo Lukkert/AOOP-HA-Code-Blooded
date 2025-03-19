@@ -1,7 +1,4 @@
-﻿using System;
-using ScheduleApp.ViewModels;
-
-namespace HA2.ScheduleApp.ViewModels;
+﻿namespace ScheduleApp.ViewModels;
 
 public partial class TeacherViewModel : ViewModelBase
 {

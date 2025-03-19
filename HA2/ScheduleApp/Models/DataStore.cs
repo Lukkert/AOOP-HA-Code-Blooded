@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.Json;
 namespace ScheduleApp.Models
@@ -32,9 +31,6 @@ namespace ScheduleApp.Models
             Teachers = data.Teachers;
             Subjects = data.Subjects;
         }
-
-
-
     }
 
 public class Data(List<Teacher> Teachers, List<Student> Students, List<Subject> Subjects)

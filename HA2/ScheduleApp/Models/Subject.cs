@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Data.Common;
 namespace ScheduleApp.Models
 {
     public class Subject

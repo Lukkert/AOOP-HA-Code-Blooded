@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace ScheduleApp.Models
 {
     public class User
