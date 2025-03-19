@@ -15,8 +15,6 @@
             <TextBox x:Name="LoginPanel" Watermark="Username" Margin="0,5,0,0" />
             <TextBox PasswordChar="*" Watermark="Password" Margin="0,5,0,0" />
             <Button Content="Login" Command="{Binding AttemptLogin}"/>
-            <Button Content="StudentView" Command="{Binding NavigateToStudentView}"/>
-            <Button Content="TeacherView" Command="{Binding NavigateToTeacherView}"/>
         </StackPanel>
     </Grid>
 </UserControl>

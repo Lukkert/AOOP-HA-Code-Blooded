@@ -14,7 +14,7 @@ public partial class MainWindowViewModel : ViewModelBase //-- INotifyPropertyCha
 
 
     [ObservableProperty]
-    private UserControl currentView;
+    private UserControl? currentView;
 
     private StudentView _studentView = new StudentView{DataContext=new StudentViewModel()};
     private TeacherView _teacherView = new TeacherView{DataContext=new TeacherViewModel()};
@@ -23,12 +23,12 @@ public partial class MainWindowViewModel : ViewModelBase //-- INotifyPropertyCha
     //public IRelayCommand OpenTeacherViewCommand { get; }
     //public IRelayCommand OpenStudentViewCommand { get; }
     
-    //public MainWindowViewModel()
-    //{
-        //this.OpenTeacherViewCommand = new AsyncRelayCommand(OpenTeacherView);
-        //this.OpenStudentViewCommand = new AsyncRelayCommand(OpenStudentView);
-    //    CurrentView = _studentView;
-    //}
+    public MainWindowViewModel()
+    {
+  //this.OpenTeacherViewCommand = new AsyncRelayCommand(OpenTeacherView);
+  //this.OpenStudentViewCommand = new AsyncRelayCommand(OpenStudentView);
+  CurrentView = _loginWindow;
+    }
     
     [RelayCommand]
     public void NavigateToTeacherView()
