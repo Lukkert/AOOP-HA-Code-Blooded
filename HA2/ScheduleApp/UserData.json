@@ -4,7 +4,7 @@
       "Subjects": [],
       "Id": 1,
       "Name": "John",
-      "Password": "ILikeTrains"
+      "Password": "1111"
     }
   ],
   "Students": [
@@ -12,7 +12,7 @@
       "EnrolledSubjects": [],
       "Id": 2,
       "Name": "Klaus",
-      "Password": "HoHoHo"
+      "Password": "2222"
     }
   ],
   "Subjects": []

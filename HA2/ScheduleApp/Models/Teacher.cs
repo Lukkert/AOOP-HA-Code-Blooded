@@ -1,9 +1,18 @@
 using System.Collections.Generic;
+using ScheduleApp.Interfaces;
 
-namespace ScheduleApp.Models
+namespace ScheduleApp.Models;
+
+public class Teacher(int Id, string Name, string Password) : IUser
 {
-    public class Teacher(int id, string name, string password) : User(id, name, password)
+    public int Id { get; set; } = Id;
+    public string Name { get; set; } = Name;
+    public string Password { get; set; } = Password;
+
+    public List<Subject>? Subjects { get; set; } = [];
+
+    public override string ToString()
     {
-        public List<Subject>? Subjects { get; set; } = [];
+        return $"Name: {Name}, Role: Teacher";
     }
 }

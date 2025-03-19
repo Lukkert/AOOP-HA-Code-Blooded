@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using System;
 using ScheduleApp.Models;
+using ScheduleApp.Events;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ScheduleApp.ViewModels;
@@ -16,21 +17,21 @@ public partial class LoginViewModel : ViewModelBase
     [RelayCommand]
     public void AttemptLogin()
     {
-        foreach (var teacher in DataStore.Teachers)
+        var login = AuthService.ValidateCredentials(Username, Password);
+
+        switch (login)
         {
-            if (Username == teacher.Name && Password == teacher.Password)
-            {
-                ViewSwitcher.SwitchView("TeacherView");
-            }
+            case Teacher:
+                ViewSwitch.Invoke("TeacherView");
+                break;
+            case Student:
+                ViewSwitch.Invoke("StudentView");
+                break;
+            default:
+                Console.WriteLine("What happened here?");
+                break;
         }
-        foreach (var student in DataStore.Students)
-        {
-            if (Username == student.Name && Password == student.Password)
-            {
-                ViewSwitcher.SwitchView("StudentView");
-            }
-        }
+        Console.WriteLine($"Current User - {AuthService.CurrentUser}");
         return;
     }
-
 }

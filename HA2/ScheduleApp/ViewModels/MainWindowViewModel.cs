@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScheduleApp.Views;
 using ScheduleApp.Models;
+using ScheduleApp.Events;
 
 namespace ScheduleApp.ViewModels;
 
@@ -22,9 +23,9 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         CurrentView = _loginView;
 
-        DataStore.Load();
+        DataStoreService.Load();
 
-        ViewSwitcher.OnViewChange += HandleViewChange;
+        ViewSwitch.OnViewSwitch += HandleViewChange;
     }
 
     [RelayCommand]

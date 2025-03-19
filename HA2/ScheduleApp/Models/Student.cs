@@ -1,10 +1,18 @@
 using System.Collections.Generic;
+using ScheduleApp.Interfaces;
 
-namespace ScheduleApp.Models
+namespace ScheduleApp.Models;
 
+public class Student(int Id, string Name, string Password) : IUser
 {
-    public class Student(int id, string name, string password) : User(id, name, password)
+    public int Id { get; set; } = Id;
+    public string Name { get; set; } = Name;
+    public string Password { get; set; } = Password;
+
+    public List<Subject>? EnrolledSubjects { get; set; } = [];
+
+    public override string ToString()
     {
-        public List<Subject>? EnrolledSubjects { get; set;} = [];
+        return $"Name: {Name}, Role: Student";
     }
 }
