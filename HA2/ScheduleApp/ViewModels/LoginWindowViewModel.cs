@@ -11,10 +11,14 @@ public partial class LoginWindowViewModel : ViewModelBase
     [ObservableProperty]
     private string? username;
 
+    [ObservableProperty]
+    private string? password;
+
     [RelayCommand]
     public void AttemptLogin()
     {
         Console.WriteLine(Username);
+        Console.WriteLine(Password);
         return;
     }
 

@@ -16,8 +16,8 @@
                 <Label Foreground="Black" Content="Username" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
                 <TextBox x:Name="LoginPanel" Watermark="Username" Margin="0,5,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding Username}"/>
 
-                <Label Foreground="Black" Content="Password" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding Password}"/>
-                <TextBox PasswordChar="*" Watermark="Password" Margin="0,5,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Foreground="Black" Content="Password" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+                <TextBox PasswordChar="*" Watermark="Password" Margin="0,5,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding Password}"/>
                 
                 <Button Content="Log in" Command="{Binding AttemptLogin}" HorizontalAlignment="Center" Background="#07EA75" HorizontalContentAlignment="Center" Margin="0,5,0,0"/>
             </StackPanel>
