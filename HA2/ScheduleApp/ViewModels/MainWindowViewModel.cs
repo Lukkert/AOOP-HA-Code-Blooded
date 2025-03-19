@@ -29,6 +29,7 @@ public partial class MainWindowViewModel : ViewModelBase //-- INotifyPropertyCha
         //this.OpenStudentViewCommand = new AsyncRelayCommand(OpenStudentView);
     //    CurrentView = _studentView;
     //}
+    
     [RelayCommand]
     public void NavigateToTeacherView()
     {
@@ -41,7 +42,7 @@ public partial class MainWindowViewModel : ViewModelBase //-- INotifyPropertyCha
     {
         CurrentView = _studentView;
     }
-
+    
 
 }
 
