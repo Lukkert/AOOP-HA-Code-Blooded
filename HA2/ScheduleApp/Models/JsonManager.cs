@@ -7,7 +7,7 @@ namespace ScheduleApp.Models
     {
             public class DataStore
         {
-        private const string FilePath = "data.json";
+        private const string FilePath = "UserData.json";
         public List<Users.Student> Students { get; set; } = new();
         public List<Users.Teacher> Teachers { get; set; } = new();
         public List<Subjects.Subject> Subjects { get; set; } = new();

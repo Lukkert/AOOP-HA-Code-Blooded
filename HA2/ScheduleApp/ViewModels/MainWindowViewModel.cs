@@ -5,11 +5,17 @@ using CommunityToolkit.Mvvm.Input;
 using HA2.ScheduleApp.ViewModels;
 using HA2.ScheduleApp.Views;
 using ScheduleApp.Views;
+using Avalonia;
 
 namespace ScheduleApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase //-- INotifyPropertyChanged from System.ComponentModel --EventHandler 
 {
+    public Window window;
+
+    [ObservableProperty]
+        private object? currentContent;
+
     [ObservableProperty]
     private UserControl currentView;
 
@@ -21,12 +27,12 @@ public partial class MainWindowViewModel : ViewModelBase //-- INotifyPropertyCha
     //public IRelayCommand OpenTeacherViewCommand { get; }
     //public IRelayCommand OpenStudentViewCommand { get; }
     
-    public MainWindowViewModel()
-    {
+    //public MainWindowViewModel()
+    //{
         //this.OpenTeacherViewCommand = new AsyncRelayCommand(OpenTeacherView);
         //this.OpenStudentViewCommand = new AsyncRelayCommand(OpenStudentView);
-        CurrentView = _studentView;
-    }
+    //    CurrentView = _studentView;
+    //}
     [RelayCommand]
     public void NavigateToTeacherView()
     {

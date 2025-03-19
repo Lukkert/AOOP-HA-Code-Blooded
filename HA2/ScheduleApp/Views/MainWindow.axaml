@@ -14,7 +14,7 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-    
+
     <Grid>
         <StackPanel Margin="10,10,-10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <!--x:Name="LoginPanel"-->
@@ -26,7 +26,11 @@
             <Button Content="Login" Command="{Binding AttemptLogin}"/>
             <Button Content="StudentView" Command="{Binding NavigateToStudentView}"/>
             <Button Content="TeacherView" Command="{Binding NavigateToTeacherView}"/>
-            <ContentControl Content="{Binding CurrentView}"/>
+            
         </StackPanel>
     </Grid>
+    <Grid Grid.Row="1" ColumnDefinitions="auto,*">
+			<!-- Main content Area -->
+			<ContentControl Grid.Column="1" Content="{Binding CurrentContent}" ZIndex="0"/>
+	</Grid>
 </Window>

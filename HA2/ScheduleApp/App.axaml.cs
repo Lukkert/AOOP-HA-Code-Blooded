@@ -6,6 +6,8 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using ScheduleApp.ViewModels;
 using ScheduleApp.Views;
+using Avalonia.Controls;
+using System;
 
 namespace ScheduleApp;
 
@@ -15,6 +17,7 @@ public partial class App : Application
     {
         AvaloniaXamlLoader.Load(this);
     }
+
 
     public override void OnFrameworkInitializationCompleted()
     {
