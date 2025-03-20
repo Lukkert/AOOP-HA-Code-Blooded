@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using ScheduleApp.Interfaces;
 
-namespace ScheduleApp.Models;
+namespace ScheduleApp.Services;
 
 public static class AuthService
 {

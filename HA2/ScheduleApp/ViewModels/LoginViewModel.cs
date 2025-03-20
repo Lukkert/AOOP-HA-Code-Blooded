@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using System;
 using ScheduleApp.Models;
+using ScheduleApp.Services;
 using ScheduleApp.Events;
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -14,11 +15,15 @@ public partial class LoginViewModel : ViewModelBase
     [ObservableProperty]
     private string? password;
 
+    [ObservableProperty]
+    private string? loginMessage;
+
     [RelayCommand]
     public void AttemptLogin()
     {
-        var login = AuthService.ValidateCredentials(Username, Password);
+        LoginMessage = null;
 
+        var login = AuthService.ValidateCredentials(Username, Password);
         switch (login)
         {
             case Teacher:
@@ -28,9 +33,13 @@ public partial class LoginViewModel : ViewModelBase
                 ViewSwitch.Invoke("StudentView");
                 break;
             default:
-                Console.WriteLine("User does not exist");
+                LoginMessage = "User does not exist";
                 break;
         }
+
+        Username = null;
+        Password = null;
+
         Console.WriteLine($"Current User - {AuthService.CurrentUser}");
         return;
     }

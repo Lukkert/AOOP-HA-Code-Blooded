@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-namespace ScheduleApp.Models;
+using ScheduleApp.Models;
+
+namespace ScheduleApp.Services;
 
 public static class DataStoreService
 {

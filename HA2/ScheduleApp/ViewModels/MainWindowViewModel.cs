@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScheduleApp.Views;
 using ScheduleApp.Models;
+using ScheduleApp.Services;
 using ScheduleApp.Events;
 
 namespace ScheduleApp.ViewModels;

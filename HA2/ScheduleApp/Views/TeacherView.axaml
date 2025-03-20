@@ -10,7 +10,7 @@
 
   <Grid RowDefinitions="Auto,*">
                 <Grid Grid.Row="0" Background="#3141CF" Height="50" ColumnDefinitions="Auto,Auto">
-                        <Button Grid.Column="0" Margin="10" Width="100" Background="Red" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">Log Out</Button>
+                        <Button Command="{Binding Logout}" Grid.Column="0" Margin="10" Width="100" Background="Red" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">Log Out</Button>
                         <TextBlock Grid.Column="1" Margin="10" VerticalAlignment="Center" FontWeight="Bold" FontSize="15">Teacher</TextBlock> 
                 </Grid>
                 <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Background="Gray">
