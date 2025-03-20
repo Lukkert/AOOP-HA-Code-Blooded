@@ -38,13 +38,32 @@ public class Student(string Name, string Password, string ProfilePicturePath = "
 
     public void DropoutSubject(Guid subject)
     {
-        Subjects?.Remove(subject);
+        if (Subjects != null)
+        {
+            Subjects.Remove(subject);  // Remove subject from student's list
+        }
 
-        // Find and update the student in the static list
+        // Find and update the student in the static list, with null check
         var studentToUpdate = DataStoreService.Students.FirstOrDefault(s => s.Id == Id);
-        studentToUpdate!.Subjects = Subjects;
+        if (studentToUpdate != null)
+        {
+            studentToUpdate.Subjects = Subjects;
+        }
+        else
+        {
+            Console.WriteLine("Student not found for ID: " + Id);
+        }
 
+        // Find and update the subject in the static list, with null check
         var subjectToUpdate = DataStoreService.Subjects.FirstOrDefault(s => s.Id == subject);
-        subjectToUpdate!.StudentsEnrolled.Remove(Id);
+        if (subjectToUpdate != null)
+        {
+            subjectToUpdate.StudentsEnrolled.Remove(Id);
+        }
+        else
+        {
+            Console.WriteLine("Subject not found for ID: " + subject);
+        }
     }
+
 }

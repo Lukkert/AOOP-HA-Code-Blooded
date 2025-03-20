@@ -26,9 +26,9 @@ public class Teacher(string Name, string Password, string ProfilePicturePath = "
         return $"Name: {Name}, Role: Teacher";
     }
 
-    public void CreateSubject(string name, string description, int teacherId)
+    public void CreateSubject(string name, string description)
     {
-        Subject subject = new Subject(name, description, teacherId);
+        Subject subject = new Subject(name, description, Id);
 
         Subjects!.Add(subject.Id);
         

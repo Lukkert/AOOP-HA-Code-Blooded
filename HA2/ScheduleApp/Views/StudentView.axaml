@@ -1,52 +1,102 @@
 <UserControl xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        xmlns:vm="using:ScheduleApp.ViewModels"
-        x:DataType="vm:StudentViewModel"
-        x:Class="ScheduleApp.Views.StudentView"
-        >
-        <Grid RowDefinitions="Auto,*">
-                <Grid Grid.Row="0" Background="#3141CF" Height="50" ColumnDefinitions="Auto,Auto">
-                        <Button Command="{Binding Logout}" Grid.Column="0" Margin="10" Width="100" Background="Red" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">Log Out</Button>
-                        <TextBlock Grid.Column="1" Margin="10" VerticalAlignment="Center" FontWeight="Bold" FontSize="15">Student</TextBlock> 
-                </Grid>
-                <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Background="Gray">
-                        <!--1st Column-->
-                        <Grid Grid.Column="0" RowDefinitions="Auto,*,*" Background="White" ShowGridLines="True">
-                                <!--Top-->
-                                <StackPanel Grid.Row="0" Orientation="Horizontal" Height="100">
-                                        <Rectangle Height="50" Width="50" Margin="10,10,10,50" Fill="Black"/>
-                                        <TextBlock Text="Name" Foreground="Black" Background="Gray" Margin="0,20,10,10" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="12"/>
-                                </StackPanel>
-                                <!--Middle-->
-                                <StackPanel Grid.Row="1">
-                                        <TextBlock Text="Enrolled Subjects" FontWeight="Bold" Margin="10"/>
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:ScheduleApp.ViewModels"
+             x:DataType="vm:StudentViewModel"
+             x:Class="ScheduleApp.Views.StudentView">
 
-                                </StackPanel>
-                                <!--Bottom-->
-                                <Button Grid.Row="2" Content="Dropout" Margin="10" Background="Red" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                        </Grid>
-
-
-                        <!--2nd Column-->
-                        <Grid Grid.Column="1" Background="Gray">
-                                <StackPanel>
-                                        <TextBlock Text="Name" Foreground="Black" Background="Gray" Margin="10,5,0,0" FontWeight="Bold" FontSize="12"/>
-                                        <TextBlock Text="Teacher" Foreground="Black" Background="Gray" Margin="10,5,0,0" FontWeight="Bold" FontSize="12"/>
-                                        <TextBlock Text="Description" Foreground="Black" Background="Gray" Margin="10,5,0,0" FontWeight="Bold" FontSize="12"/>
-                                        <TextBlock Text="Enrolled Students" Foreground="Black" Background="Gray" Margin="10,5,0,0" FontWeight="Bold" FontSize="12"/>
-                                        <Rectangle Height="350" Fill="White" Margin="10"/>
-                                </StackPanel>
-                                
-                        </Grid>
-                        <!--3rd Column-->
-                        <Grid Grid.Column="2" RowDefinitions="*,*,*" Background="White" ShowGridLines="True">
-                                <Rectangle Grid.Row="0"/>
-                                <Rectangle Grid.Row="1"/>
-                                <Rectangle Grid.Row="2"/>
-                        </Grid>
-                </Grid>
+    <Grid RowDefinitions="Auto,*">
+        <!-- Header -->
+        <Grid Grid.Row="0" Background="#3141CF" Height="50" ColumnDefinitions="Auto,Auto">
+            <Button Command="{Binding Logout}" Grid.Column="0" Margin="10" Width="100" Background="Red" Foreground="White"
+                    HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">
+                Log Out
+            </Button>
+            <TextBlock Grid.Column="1" Margin="10" VerticalAlignment="Center" FontWeight="Bold" FontSize="15">
+                Student
+            </TextBlock>
         </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Background="Gray">
+            <!-- 1st Column (Enrolled Subjects) -->
+            <StackPanel Grid.Column="0" Background="White" Margin="5">
+                <TextBlock Text="Enrolled Subjects" FontWeight="Bold" Margin="10"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <ListBox ItemsSource="{Binding EnrolledSubjects}"
+                             SelectedItem="{Binding SelectedEnrolledSubject, Mode=TwoWay}"
+                             VerticalAlignment="Stretch" MaxHeight="300" SelectionMode="Single">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="Blue" CornerRadius="5" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding Name}" FontSize="16"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+
+                <!-- Dropout Button -->
+                <Button Content="Dropout"
+                        Command="{Binding DropoutCommand}"
+                        IsEnabled="{Binding SelectedEnrolledSubject}"
+                        Width="150" Height="40"
+                        Background="Red" Foreground="White"
+                        HorizontalAlignment="Center"
+                        Margin="10"/>
+            </StackPanel>
+
+            <!-- 2nd Column (Displays SelectedSubject's properties) -->
+            <StackPanel Grid.Column="1" Background="Gray" Margin="5">
+                <TextBlock Text="Subject Details" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Name:" FontWeight="Bold"/>
+                <TextBlock Text="{Binding SelectedEnrolledSubject.Name}" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Teacher:" FontWeight="Bold"/>
+                <TextBlock Text="{Binding SelectedEnrolledSubject.TeacherId}" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Description:" FontWeight="Bold"/>
+                <TextBlock Text="{Binding SelectedEnrolledSubject.Description}" Margin="0,0,0,10"/>
+            </StackPanel>
+
+            <!-- 3rd Column (Available Subjects) -->
+            <StackPanel Grid.Column="2" Background="White" Margin="5">
+                <TextBlock Text="Available Subjects" FontWeight="Bold" Margin="10"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <ListBox ItemsSource="{Binding AvailableSubjects}"
+                             SelectedItem="{Binding SelectedAvailableSubject, Mode=TwoWay}"
+                             VerticalAlignment="Stretch" MaxHeight="300" SelectionMode="Single">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="Green" CornerRadius="5" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding Name}" FontSize="16"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+
+                <!-- Enroll Button -->
+                <Button Content="Enroll"
+                        Command="{Binding EnrollCommand}"
+                        IsEnabled="{Binding SelectedAvailableSubject}"
+                        Width="150" Height="40"
+                        Background="Green" Foreground="White"
+                        HorizontalAlignment="Center"
+                        Margin="10"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
 </UserControl>

@@ -32,8 +32,10 @@
       FontSize="16"
       Text="{Binding Message}" />
     <Button
+      Width = "50"
+      Height = "20"
       HorizontalAlignment="Center"
       Click="Confirm"
-      Content="OK" />
+      Content="Confirm" />
   </StackPanel>
 </Window>

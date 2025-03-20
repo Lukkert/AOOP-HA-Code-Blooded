@@ -15,9 +15,15 @@ namespace ScheduleApp.ViewModels;
 
 public partial class StudentViewModel : ViewModelBase
 {
-    private ObservableCollection<Subject>? AvailableSubjects;
+    public ObservableCollection<Subject>? AvailableSubjects { get; set; } = new ObservableCollection<Subject>();
 
-    private ObservableCollection<Subject>? EnrolledSubjects;
+    public ObservableCollection<Subject>? EnrolledSubjects { get; set; } = new ObservableCollection<Subject>();
+
+    [ObservableProperty]
+    private Subject? selectedAvailableSubject;
+
+    [ObservableProperty]
+    private Subject? selectedEnrolledSubject;
 
     [RelayCommand]
     public void Logout()
@@ -26,31 +32,92 @@ public partial class StudentViewModel : ViewModelBase
         ShowPopup.Invoke("Logged out!");
     }
 
+    [RelayCommand]
+   public void Enroll()
+{
+    if (SelectedAvailableSubject != null)
+    {
+        var student = AuthService.CurrentUser as Student;
+        
+        if (student != null)
+        {
+            EnrolledSubjects!.Add(SelectedAvailableSubject);
+            AvailableSubjects!.Remove(SelectedAvailableSubject);
+
+            student.EnrollSubject(SelectedAvailableSubject.Id);
+            Update();
+        }
+        else
+        {
+            // Handle case where student is null
+            ShowPopup.Invoke("Student not logged in!");
+        }
+    }
+    else
+    {
+        ShowPopup.Invoke("No subject selected to enroll!");
+    }
+}
+
+[RelayCommand]
+public void Dropout()
+{
+    // Ensure the selected subject and collections are not null
+    if (SelectedEnrolledSubject == null)
+    {
+        ShowPopup.Invoke("No subject selected to drop out.");
+        return;
+    }
+
+    if (AvailableSubjects == null) AvailableSubjects = new ObservableCollection<Subject>();
+    if (EnrolledSubjects == null) EnrolledSubjects = new ObservableCollection<Subject>();
+
+    var student = AuthService.CurrentUser as Student;
+    if (student == null)
+    {
+        ShowPopup.Invoke("User is not logged in.");
+        return;
+    }
+
+    Console.WriteLine($"Attempting to drop out subject: {SelectedEnrolledSubject.Name}");
+
+    // Ensure the subject exists in the enrolled list before attempting to remove
+    if (EnrolledSubjects.Contains(SelectedEnrolledSubject))
+    {
+        AvailableSubjects.Add(SelectedEnrolledSubject);
+        EnrolledSubjects.Remove(SelectedEnrolledSubject);
+        student.DropoutSubject(SelectedEnrolledSubject.Id);
+    }
+    else
+    {
+        ShowPopup.Invoke("Subject not found in enrolled subjects.");
+    }
+
+    Update();
+}
+
+
+
+
     public void Update()
     {
-        //var student = AuthService.CurrentUser as Student;
-        //var subjectId = new Guid("eeef5b03-946f-4a74-b6ff-9d7e5c34ae29");
-        //student!.EnrollSubject(subjectId);
-
-        //var student = AuthService.CurrentUser as Student;
-        //var subjectId = new Guid("eeef5b03-946f-4a74-b6ff-9d7e5c34ae29");
-        //student!.DropoutSubject(subjectId);
-
-        AvailableSubjects = new ObservableCollection<Subject>(DataStoreService.Subjects);
-        EnrolledSubjects = new ObservableCollection<Subject>();
-
         var subjects = AuthService.CurrentUser!.Subjects;
 
         // Remove subjects from AvailableSubjects that the student is already enrolled in
-        var filteredAvailableSubjects = AvailableSubjects.Where(aSubject => !subjects!.Contains(aSubject.Id)).ToList();
-        AvailableSubjects.Clear();
+        var filteredAvailableSubjects = DataStoreService.Subjects
+            .Where(aSubject => !subjects!.Contains(aSubject.Id))
+            .ToList();
+
+        // Clear the existing AvailableSubjects collection and add the filtered subjects
+        AvailableSubjects!.Clear();
         foreach (var subject in filteredAvailableSubjects)
         {
             AvailableSubjects.Add(subject);
             Console.WriteLine("Available subject: " + subject.Name);
         }
 
-        // Add enrolled subjects to EnrolledSubjects
+        // Clear the existing EnrolledSubjects collection and add the new items
+        EnrolledSubjects!.Clear();
         foreach (var subject in DataStoreService.Subjects)
         {
             if (subjects!.Contains(subject.Id))
