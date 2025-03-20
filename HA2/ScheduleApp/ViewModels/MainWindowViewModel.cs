@@ -32,7 +32,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public void SwitchToTeacherView()
     {
         CurrentView = _teacherView;
-        //_teacherView.Update();
+        (_teacherView.DataContext as TeacherViewModel)!.Update();
     }
 
     public void SwitchToStudentView()

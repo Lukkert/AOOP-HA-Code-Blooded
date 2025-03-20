@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ScheduleApp.Interfaces;
 using ScheduleApp.Services;
 
@@ -23,5 +24,32 @@ public class Teacher(string Name, string Password, string ProfilePicturePath = "
     public override string ToString()
     {
         return $"Name: {Name}, Role: Teacher";
+    }
+
+    public void CreateSubject(string name, string description, int teacherId)
+    {
+        Subject subject = new Subject(name, description, teacherId);
+
+        Subjects!.Add(subject.Id);
+        
+        var teacherToUpdate = DataStoreService.Teachers.FirstOrDefault(s => s.Id == Id);
+        teacherToUpdate!.Subjects = Subjects;
+
+       DataStoreService.Subjects.Add(subject);
+
+    }
+
+    public void UpdateSubject()
+    {
+        
+    }
+    public void DeleteSubject(Subject subject)
+    {
+        Subjects!.Remove(subject.Id);
+
+        var teacherToUpdate = DataStoreService.Teachers.FirstOrDefault(s => s.Id == Id);
+        teacherToUpdate!.Subjects = Subjects;
+
+        DataStoreService.Subjects.Remove(subject);
     }
 }

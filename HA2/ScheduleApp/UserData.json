@@ -5,7 +5,11 @@
       "Name": "John",
       "Password": "0ffe1abd1a08215353c233d6e009613e95eec4253832a761af28ff37ac5a150c",
       "ProfilePicturePath": "Assets/Default.png",
-      "Subjects": []
+      "Subjects": [
+        "4b20bf32-5cc3-4032-b7f7-692c4e1b6461",
+        "eeef5b03-946f-4a74-b6ff-9d7e5c34ae29",
+        "e2dafcae-4ec7-4213-b4ea-15b55d6ea3d3"
+      ]
     }
   ],
   "Students": [
@@ -35,6 +39,13 @@
       "StudentsEnrolled": [
         1
       ]
+    },
+    {
+      "Id": "4b20bf32-5cc3-4032-b7f7-692c4e1b6461",
+      "Name": "Math",
+      "Description": "#YetAnotherSubjectWithJohn",
+      "TeacherId": 1,
+      "StudentsEnrolled": []
     }
   ]
 }
