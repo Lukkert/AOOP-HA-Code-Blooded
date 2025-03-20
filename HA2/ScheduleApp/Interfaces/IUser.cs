@@ -11,6 +11,7 @@ public interface IUser
     string Name { get; set; }
     string Password { get; set; }
     string ProfilePicturePath { get; set;}
+    List<Guid>? Subjects { get; set; }
 
     string ToString();
 }

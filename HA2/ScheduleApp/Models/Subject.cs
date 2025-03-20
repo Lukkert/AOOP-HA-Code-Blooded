@@ -8,5 +8,5 @@ public class Subject(string Name, string Description, int TeacherId)
     public string Name { get; set; } = Name;
     public string Description { get; set; } = Description;
     public int TeacherId { get; set; } = TeacherId;
-    public List<Student> StudentsEnrolled { get; set; } = [];
+    public List<int> StudentsEnrolled { get; set; } = [];
 }

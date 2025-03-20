@@ -12,7 +12,6 @@ public class Teacher(string Name, string Password, string ProfilePicturePath = "
     public string Name { get; set; } = Name;
     public string Password { get; set; } = Password;
     public string ProfilePicturePath { get; set; } = ProfilePicturePath;
-
     public List<Guid>? Subjects { get; set; } = [];
 
     // Factory method for creating new teachers (with hashing)
