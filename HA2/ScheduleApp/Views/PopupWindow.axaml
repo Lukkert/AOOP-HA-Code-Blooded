@@ -1,0 +1,39 @@
+<Window
+  x:Class="ScheduleApp.Views.PopupWindow"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:vm="using:ScheduleApp.ViewModels"
+  Width="300"
+  Height="150"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  x:DataType="vm:PopupWindowViewModel"
+  CanResize="False"
+  WindowStartupLocation="CenterScreen"
+  mc:Ignorable="d">
+
+  <Design.DataContext>
+    <!--
+      This only sets the DataContext for the previewer in an IDE,
+      to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+    -->
+    <vm:MainWindowViewModel />
+  </Design.DataContext>
+
+  <StackPanel
+    Margin="20"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center">
+    <TextBlock
+      Margin="10"
+      HorizontalAlignment="Center"
+      FontSize="16"
+      Text="{Binding Message}" />
+    <Button
+      HorizontalAlignment="Center"
+      Click="Confirm"
+      Content="OK" />
+  </StackPanel>
+</Window>

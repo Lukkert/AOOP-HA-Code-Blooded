@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Avalonia;
+using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScheduleApp.Events;
 using ScheduleApp.Models;
 using ScheduleApp.Services;
+using ScheduleApp.Views;
 
 namespace ScheduleApp.ViewModels;
 
@@ -20,6 +23,7 @@ public partial class StudentViewModel : ViewModelBase
     public void Logout()
     {
         ViewSwitch.Invoke("LoginView");
+        ShowPopup.Invoke("Logged out!");
     }
 
     public void Update()
