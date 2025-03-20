@@ -23,30 +23,24 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         CurrentView = _loginView;
-
-        //DataStoreService.Teachers.Add(Teacher.Create("John", "1111"));
-        //DataStoreService.Students.Add(Student.Create("Klaus", "2222"));
-        //DataStoreService.Save();
-
+        
         DataStoreService.Load();
 
         ViewSwitch.OnViewSwitch += HandleViewChange;
     }
 
-    [RelayCommand]
-    public void NavigateToTeacherView()
+    public void SwitchToTeacherView()
     {
         CurrentView = _teacherView;
 
     }
 
-    [RelayCommand]
-    public void NavigateToStudentView()
+    public void SwitchToStudentView()
     {
         CurrentView = _studentView;
     }
 
-        public void NavigateToLoginView()
+    public void SwitchToLoginView()
     {
         CurrentView = _loginView;
     }
@@ -56,13 +50,13 @@ public partial class MainWindowViewModel : ViewModelBase
         switch (viewName)
         {
             case "StudentView":
-                NavigateToStudentView();
+                SwitchToStudentView();
                 break;
             case "TeacherView":
-                NavigateToTeacherView();
+                SwitchToTeacherView();
                 break;
             case "LoginView":
-                NavigateToLoginView();
+                SwitchToLoginView();
                 break;
             default:
                 break;
