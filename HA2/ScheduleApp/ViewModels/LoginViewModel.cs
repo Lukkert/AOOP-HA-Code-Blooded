@@ -23,6 +23,12 @@ public partial class LoginViewModel : ViewModelBase
     {
         LoginMessage = null;
 
+        if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+        {
+            LoginMessage = "Please enter a username and password";
+            return;
+        }
+
         var login = AuthService.ValidateCredentials(Username, Password);
         switch (login)
         {
@@ -33,14 +39,13 @@ public partial class LoginViewModel : ViewModelBase
                 ViewSwitch.Invoke("StudentView");
                 break;
             default:
-                LoginMessage = "User does not exist";
+                LoginMessage = "Invalid username or password";
                 break;
         }
 
         Username = null;
         Password = null;
 
-        Console.WriteLine($"Current User - {AuthService.CurrentUser}");
         return;
     }
 }
