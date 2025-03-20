@@ -39,10 +39,12 @@ public class Teacher(string Name, string Password, string ProfilePicturePath = "
 
     }
 
-    public void UpdateSubject()
+    public void UpdateSubject(Subject subject)
     {
-        
+        var subjectToUpdate = DataStoreService.Subjects.FirstOrDefault(s => s.Id == subject.Id);
+        subjectToUpdate = subject;
     }
+
     public void DeleteSubject(Subject subject)
     {
         Subjects!.Remove(subject.Id);

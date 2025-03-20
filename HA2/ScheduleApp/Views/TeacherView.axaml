@@ -16,7 +16,7 @@
                 <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Background="Gray">
                         <!--1st Column-->
                         <Grid Grid.Column="0" RowDefinitions="*,*,*" Background="White" ShowGridLines="True">
-                                <ListBox Items="{Binding Subjects}">
+                                <ListBox ItemsSource="{Binding Subjects}">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel Orientation="Horizontal"/>
