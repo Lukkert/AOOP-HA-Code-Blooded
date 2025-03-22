@@ -43,11 +43,32 @@ public partial class TeacherViewModel : ViewModelBase
     }
 
     [RelayCommand]
+    public void EditSubject()
+    {
+        if (SelectedSubject == null)
+        {
+            Popup.Invoke("Please select a subject.");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(NewSubjectName) || string.IsNullOrEmpty(NewSubjectDescription))
+        {
+            Popup.Invoke("Please enter a name and description");
+            return;
+        }
+
+        var teacher = AuthService.CurrentUser as Teacher;
+        teacher!.EditSubject(SelectedSubject, NewSubjectName, NewSubjectDescription);
+
+        Update();
+    }
+
+    [RelayCommand]
     public void RemoveSubject()
     {
         if (SelectedSubject == null)
         {
-            Popup.Invoke("No subject selected to remove.");
+            Popup.Invoke("Please select a subject.");
             return;
         }
         var teacher = AuthService.CurrentUser as Teacher;
@@ -69,7 +90,6 @@ public partial class TeacherViewModel : ViewModelBase
             if (subjectsIds!.Contains(subject.Id))
             {
                 Subjects.Add(subject);
-                //Console.WriteLine("Owned Subject: " + subject.Name);
             }
         }
     }

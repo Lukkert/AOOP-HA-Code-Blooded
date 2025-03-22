@@ -39,10 +39,13 @@ public class Teacher(string Name, string Password, string ProfilePicturePath = "
 
     }
 
-    public void UpdateSubject(Subject subject)
+    public void EditSubject(Subject subject, string newName, string newDescription)
     {
         var subjectToUpdate = DataStoreService.Subjects.FirstOrDefault(s => s.Id == subject.Id);
         subjectToUpdate = subject;
+
+        subjectToUpdate.Name = newName;
+        subjectToUpdate.Description = newDescription;
     }
 
     public void DeleteSubject(Subject subject)
@@ -53,5 +56,7 @@ public class Teacher(string Name, string Password, string ProfilePicturePath = "
         teacherToUpdate!.Subjects = Subjects;
 
         DataStoreService.Subjects.Remove(subject);
+
+        DataStoreService.Students.ForEach(student => student.Subjects?.Remove(subject.Id));
     }
 }

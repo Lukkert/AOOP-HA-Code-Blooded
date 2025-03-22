@@ -34,6 +34,8 @@
             <Setter Property="Background" Value="#004DFF" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
@@ -95,19 +97,13 @@
       DockPanel.Dock="Bottom"
       Width="200"
       Height="40"
-      HorizontalAlignment="Center"
-      VerticalAlignment="Center"
       Click="Confirm"
       FontSize="16"
       FontWeight="Bold"
-      Background="#0078D4"
-      Foreground="White"
       BorderBrush="Transparent"
       BorderThickness="1"
       Padding="10"
       Margin="0,-15,0,0"
-      CornerRadius="8"
-      Cursor="Hand"
       Content="Confirm"/>
   </DockPanel>
 
