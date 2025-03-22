@@ -7,8 +7,5 @@ public partial class TeacherView : UserControl
     
     {
         InitializeComponent();
-        
     }
-
-    
 }

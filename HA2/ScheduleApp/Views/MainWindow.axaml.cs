@@ -13,7 +13,7 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         Closing += (sender, e) => DataStoreService.Save();
-        ShowPopup.OnPopup += HandlePopup;
+        Events.Popup.OnPopup += HandlePopup;
     }
 
     private async void HandlePopup(string message)
@@ -21,7 +21,6 @@ public partial class MainWindow : Window
         var dialog = new PopupWindow(message);
         var owner = VisualRoot as Window;
         await dialog.ShowDialog<bool>(owner!);
-
     }
    
 }

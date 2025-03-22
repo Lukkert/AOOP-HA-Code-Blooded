@@ -23,7 +23,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         CurrentView = _loginView;
-        
+
         DataStoreService.Load();
 
         ViewSwitch.OnViewSwitch += HandleViewChange;

@@ -5,12 +5,18 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:vm="using:ScheduleApp.ViewModels"
+  Title="Notification"
   Width="300"
   Height="150"
   d:DesignHeight="450"
   d:DesignWidth="800"
   x:DataType="vm:PopupWindowViewModel"
+  Background="Transparent"
   CanResize="False"
+  ExtendClientAreaTitleBarHeightHint="150"
+  ExtendClientAreaToDecorationsHint="True"
+  SystemDecorations="BorderOnly"
+  TransparencyLevelHint="AcrylicBlur"
   WindowStartupLocation="CenterScreen"
   mc:Ignorable="d">
 
@@ -22,20 +28,88 @@
     <vm:MainWindowViewModel />
   </Design.DataContext>
 
-  <StackPanel
-    Margin="20"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Center">
+   <Window.Styles>
+        <!--  Custom Button Template  -->
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#004DFF" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="{TemplateBinding Foreground}"
+                                Text="{TemplateBinding Content}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--  Button style  -->
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#004DFF" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#005FFF" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style Selector="Button:pressed">
+            <Setter Property="Background" Value="#003BBB" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+    </Window.Styles>
+
+  <Panel>
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+      <ExperimentalAcrylicBorder.Material>
+        <ExperimentalAcrylicMaterial
+          BackgroundSource="Digger"
+          MaterialOpacity="0.65"
+          TintColor="White"
+          TintOpacity="1" />
+      </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>
+ <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+    <!-- Message Text (Wrapped) -->
     <TextBlock
-      Margin="10"
+      DockPanel.Dock="Top"
       HorizontalAlignment="Center"
-      FontSize="16"
-      Text="{Binding Message}" />
+      VerticalAlignment="Center"
+      FontSize="18"
+      FontWeight="SemiBold"
+      Text="{Binding Message}"
+      Foreground="Black"
+      TextWrapping="Wrap"
+      MaxWidth="250"
+      Padding="15"
+      Margin="0,0,0,25" />
+
+    <!-- Confirm Button (Fixed position) -->
     <Button
-      Width = "50"
-      Height = "20"
+      DockPanel.Dock="Bottom"
+      Width="200"
+      Height="40"
       HorizontalAlignment="Center"
+      VerticalAlignment="Center"
       Click="Confirm"
-      Content="Confirm" />
-  </StackPanel>
+      FontSize="16"
+      FontWeight="Bold"
+      Background="#0078D4"
+      Foreground="White"
+      BorderBrush="Transparent"
+      BorderThickness="1"
+      Padding="10"
+      Margin="0,-15,0,0"
+      CornerRadius="8"
+      Cursor="Hand"
+      Content="Confirm"/>
+  </DockPanel>
+
+  </Panel>
 </Window>

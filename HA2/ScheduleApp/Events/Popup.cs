@@ -2,7 +2,7 @@ using System;
 
 namespace ScheduleApp.Events;
 
-public static class ShowPopup
+public static class Popup
 {
     public static event Action<string>? OnPopup;
 

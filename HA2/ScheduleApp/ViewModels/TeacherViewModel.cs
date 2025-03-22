@@ -10,8 +10,8 @@ namespace ScheduleApp.ViewModels;
 
 public partial class TeacherViewModel : ViewModelBase
 {
-    public ObservableCollection<Subject>? Subjects { get; set;} = [];
-    
+    public ObservableCollection<Subject>? Subjects { get; set; } = [];
+
     [ObservableProperty]
     private Subject? selectedSubject;
 
@@ -32,7 +32,7 @@ public partial class TeacherViewModel : ViewModelBase
     {
         if (string.IsNullOrEmpty(NewSubjectName) || string.IsNullOrEmpty(NewSubjectDescription))
         {
-            // POPUP
+            Popup.Invoke("Please enter a name and description");
             return;
         }
 
@@ -45,8 +45,13 @@ public partial class TeacherViewModel : ViewModelBase
     [RelayCommand]
     public void RemoveSubject()
     {
-        if (SelectedSubject == null) return;
+        if (SelectedSubject == null)
+        {
+            Popup.Invoke("No subject selected to remove.");
+            return;
+        }
         var teacher = AuthService.CurrentUser as Teacher;
+
         teacher!.DeleteSubject(SelectedSubject);
 
         Update();
@@ -64,7 +69,7 @@ public partial class TeacherViewModel : ViewModelBase
             if (subjectsIds!.Contains(subject.Id))
             {
                 Subjects.Add(subject);
-                Console.WriteLine("Enrolled subject: " + subject.Name);
+                //Console.WriteLine("Owned Subject: " + subject.Name);
             }
         }
     }

@@ -29,72 +29,51 @@ public partial class StudentViewModel : ViewModelBase
     public void Logout()
     {
         ViewSwitch.Invoke("LoginView");
-        ShowPopup.Invoke("Logged out!");
     }
 
     [RelayCommand]
-   public void Enroll()
-{
-    if (SelectedAvailableSubject != null)
+    public void Enroll()
     {
+
+        if (SelectedAvailableSubject == null)
+        {
+            Popup.Invoke("No subject selected to enroll.");
+            return;
+        }
+
+
         var student = AuthService.CurrentUser as Student;
-        
-        if (student != null)
+
+        student!.EnrollSubject(SelectedAvailableSubject!.Id);
+
+        EnrolledSubjects!.Add(SelectedAvailableSubject);
+        AvailableSubjects!.Remove(SelectedAvailableSubject); // This damned line caused me 2 hours of debugging.. (It sets SelectedSubject to null..) (It was previously  above enroll subject)
+
+        Update();
+    }
+
+    [RelayCommand]
+    public void Dropout()
+    {
+        // Ensure the selected subject and collections are not null
+        if (SelectedEnrolledSubject == null)
         {
-            EnrolledSubjects!.Add(SelectedAvailableSubject);
-            AvailableSubjects!.Remove(SelectedAvailableSubject);
-
-            student.EnrollSubject(SelectedAvailableSubject.Id);
-            Update();
+            Popup.Invoke("No subject selected to drop out.");
+            return;
         }
-        else
-        {
-            // Handle case where student is null
-            ShowPopup.Invoke("Student not logged in!");
-        }
-    }
-    else
-    {
-        ShowPopup.Invoke("No subject selected to enroll!");
-    }
-}
 
-[RelayCommand]
-public void Dropout()
-{
-    // Ensure the selected subject and collections are not null
-    if (SelectedEnrolledSubject == null)
-    {
-        ShowPopup.Invoke("No subject selected to drop out.");
-        return;
-    }
+        if (AvailableSubjects == null) AvailableSubjects = new ObservableCollection<Subject>();
+        if (EnrolledSubjects == null) EnrolledSubjects = new ObservableCollection<Subject>();
 
-    if (AvailableSubjects == null) AvailableSubjects = new ObservableCollection<Subject>();
-    if (EnrolledSubjects == null) EnrolledSubjects = new ObservableCollection<Subject>();
+        var student = AuthService.CurrentUser as Student;
 
-    var student = AuthService.CurrentUser as Student;
-    if (student == null)
-    {
-        ShowPopup.Invoke("User is not logged in.");
-        return;
-    }
+        student!.DropoutSubject(SelectedEnrolledSubject.Id);
 
-    Console.WriteLine($"Attempting to drop out subject: {SelectedEnrolledSubject.Name}");
-
-    // Ensure the subject exists in the enrolled list before attempting to remove
-    if (EnrolledSubjects.Contains(SelectedEnrolledSubject))
-    {
         AvailableSubjects.Add(SelectedEnrolledSubject);
         EnrolledSubjects.Remove(SelectedEnrolledSubject);
-        student.DropoutSubject(SelectedEnrolledSubject.Id);
-    }
-    else
-    {
-        ShowPopup.Invoke("Subject not found in enrolled subjects.");
-    }
 
-    Update();
-}
+        Update();
+    }
 
 
 
@@ -108,22 +87,20 @@ public void Dropout()
             .Where(aSubject => !subjects!.Contains(aSubject.Id))
             .ToList();
 
-        // Clear the existing AvailableSubjects collection and add the filtered subjects
+        //
         AvailableSubjects!.Clear();
         foreach (var subject in filteredAvailableSubjects)
         {
             AvailableSubjects.Add(subject);
-            Console.WriteLine("Available subject: " + subject.Name);
         }
 
-        // Clear the existing EnrolledSubjects collection and add the new items
+        //
         EnrolledSubjects!.Clear();
         foreach (var subject in DataStoreService.Subjects)
         {
             if (subjects!.Contains(subject.Id))
             {
                 EnrolledSubjects.Add(subject);
-                Console.WriteLine("Enrolled subject: " + subject.Name);
             }
         }
     }
