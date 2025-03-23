@@ -25,6 +25,9 @@ public partial class StudentViewModel : ViewModelBase
     [ObservableProperty]
     private Subject? selectedEnrolledSubject;
 
+    [ObservableProperty]
+    private string? studentName;
+
     [RelayCommand]
     public void Logout()
     {
@@ -80,6 +83,8 @@ public partial class StudentViewModel : ViewModelBase
 
     public void Update()
     {
+        StudentName = AuthService.CurrentUser!.Name;
+
         var subjects = AuthService.CurrentUser!.Subjects;
 
         // Remove subjects from AvailableSubjects that the student is already enrolled in

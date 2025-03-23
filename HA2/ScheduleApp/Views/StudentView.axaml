@@ -10,50 +10,120 @@
     x:DataType="vm:StudentViewModel"
     mc:Ignorable="d">
 
+    <!--  Styles  -->
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#004DFF" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border
+                            Padding="10"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="{TemplateBinding Foreground}"
+                                Text="{TemplateBinding Content}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#005FFF" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <Style Selector="Button:pressed">
+            <Setter Property="Background" Value="#003BBB" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <Style Selector="ListBox">
+            <Setter Property="Background" Value="White" /> 
+        </Style>
+    </UserControl.Styles>
+
+
+
+    <!--  Content  -->
     <Grid RowDefinitions="Auto,*">
         <!--  Header  -->
         <Grid
             Grid.Row="0"
             Height="50"
-            Background="#3141CF"
-            ColumnDefinitions="Auto,Auto">
-            <Button
+            Background="#004DFF"
+            ColumnDefinitions="Auto,*,Auto,Auto">
+
+            <TextBlock
                 Grid.Column="0"
-                Width="100"
                 Margin="10"
-                HorizontalAlignment="Stretch"
-                HorizontalContentAlignment="Center"
-                Background="Red"
-                Command="{Binding Logout}"
-                Foreground="White">
-                Log Out
-            </Button>
+                VerticalAlignment="Center"
+                FontSize="15"
+                FontWeight="Bold"
+                Foreground="White"
+                Text="ScheduleApp" />
+
             <TextBlock
                 Grid.Column="1"
                 Margin="10"
                 VerticalAlignment="Center"
                 FontSize="15"
-                FontWeight="Bold">
-                Student
-            </TextBlock>
+                FontWeight="Bold"
+                Foreground="White"
+                Text="Student" />
+
+            <TextBlock
+                Grid.Column="2"
+                Margin="10"
+                VerticalAlignment="Center"
+                FontSize="15"
+                FontWeight="Bold"
+                Foreground="White"
+                Text="{Binding StudentName}" />
+
+            <Button
+                Grid.Column="3"
+                Width="100"
+                Height="35"
+                Margin="5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding Logout}"
+                Content="Log Out" />
         </Grid>
 
+        <!--  Main Content Grid  -->
         <Grid
             Grid.Row="1"
-            Background="Gray"
+            Background="#F5F5F5"
             ColumnDefinitions="*,*,*">
+
             <!--  1st Column (Enrolled Subjects)  -->
-            <StackPanel
+            <Grid
                 Grid.Column="0"
                 Margin="5"
                 Background="White">
-                <TextBlock
-                    Margin="10"
-                    FontWeight="Bold"
-                    Text="Enrolled Subjects" />
-                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ScrollViewer
+                    Grid.Row="0"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto">
                     <ListBox
-                        MaxHeight="300"
+                        Margin="5"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         ItemsSource="{Binding EnrolledSubjects}"
                         SelectedItem="{Binding SelectedEnrolledSubject}">
@@ -67,65 +137,91 @@
                                 <Border
                                     Margin="5"
                                     Padding="10"
-                                    Background="Blue"
+                                    Background="#E0E0E0"
                                     CornerRadius="5">
-                                    <TextBlock FontSize="16" Text="{Binding Name}" />
+                                    <TextBlock
+                                        FontSize="16"
+                                        Foreground="#212121"
+                                        Text="{Binding Name}" />
                                 </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </ScrollViewer>
 
-                <!--  Dropout Button  -->
                 <Button
+                    Grid.Row="1"
                     Width="150"
                     Height="40"
                     Margin="10"
                     HorizontalAlignment="Center"
-                    Background="Red"
                     Command="{Binding DropoutCommand}"
                     Content="Dropout"
-                    Foreground="White"
                     IsEnabled="{Binding SelectedEnrolledSubject}" />
-            </StackPanel>
+            </Grid>
 
-            <!--  2nd Column (Displays SelectedSubject's properties)  -->
+            <!--  2nd Column (Subject Details)  -->
             <StackPanel
                 Grid.Column="1"
                 Margin="5"
-                Background="Gray">
+                VerticalAlignment="Stretch"
+                Background="White">
                 <TextBlock
                     Margin="0,0,0,10"
                     FontSize="20"
                     FontWeight="Bold"
+                    Foreground="#212121"
                     Text="Subject Details" />
 
-                <TextBlock FontWeight="Bold" Text="Name:" />
-                <TextBlock Margin="0,0,0,10" Text="{Binding SelectedEnrolledSubject.Name}" />
+                <TextBlock
+                    FontWeight="Bold"
+                    Foreground="#424242"
+                    Text="Name:" />
+                <TextBlock
+                    Margin="0,0,0,10"
+                    Foreground="#212121"
+                    Text="{Binding SelectedEnrolledSubject.Name}" />
 
-                <TextBlock FontWeight="Bold" Text="Teacher:" />
-                <TextBlock Margin="0,0,0,10" Text="{Binding SelectedEnrolledSubject.TeacherId}" />
+                <TextBlock
+                    FontWeight="Bold"
+                    Foreground="#424242"
+                    Text="Teacher:" />
+                <TextBlock
+                    Margin="0,0,0,10"
+                    Foreground="#212121"
+                    Text="{Binding SelectedEnrolledSubject.TeacherId}" />
 
-                <TextBlock FontWeight="Bold" Text="Description:" />
-                <TextBlock Margin="0,0,0,10" Text="{Binding SelectedEnrolledSubject.Description}" />
+                <TextBlock
+                    FontWeight="Bold"
+                    Foreground="#424242"
+                    Text="Description:" />
+                <TextBlock
+                    Margin="0,0,0,10"
+                    Foreground="#212121"
+                    Text="{Binding SelectedEnrolledSubject.Description}"
+                    TextWrapping="Wrap" />
             </StackPanel>
 
             <!--  3rd Column (Available Subjects)  -->
-            <StackPanel
+            <Grid
                 Grid.Column="2"
                 Margin="5"
                 Background="White">
-                <TextBlock
-                    Margin="10"
-                    FontWeight="Bold"
-                    Text="Available Subjects" />
-                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ScrollViewer
+                    Grid.Row="0"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto">
                     <ListBox
-                        MaxHeight="300"
+                        Margin="5"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         ItemsSource="{Binding AvailableSubjects}"
-                        SelectedItem="{Binding SelectedAvailableSubject, Mode=TwoWay}"
-                        SelectionMode="Single">
+                        SelectedItem="{Binding SelectedAvailableSubject}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Vertical" />
@@ -136,27 +232,28 @@
                                 <Border
                                     Margin="5"
                                     Padding="10"
-                                    Background="Green"
+                                    Background="#E0E0E0"
                                     CornerRadius="5">
-                                    <TextBlock FontSize="16" Text="{Binding Name}" />
+                                    <TextBlock
+                                        FontSize="16"
+                                        Foreground="#212121"
+                                        Text="{Binding Name}" />
                                 </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </ScrollViewer>
 
-                <!--  Enroll Button  -->
                 <Button
+                    Grid.Row="1"
                     Width="150"
                     Height="40"
                     Margin="10"
                     HorizontalAlignment="Center"
-                    Background="Green"
                     Command="{Binding EnrollCommand}"
                     Content="Enroll"
-                    Foreground="White"
                     IsEnabled="{Binding SelectedAvailableSubject}" />
-            </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

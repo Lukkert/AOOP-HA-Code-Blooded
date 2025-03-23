@@ -21,6 +21,9 @@ public partial class TeacherViewModel : ViewModelBase
     [ObservableProperty]
     private string? newSubjectDescription;
 
+    [ObservableProperty]
+    private string? teacherName;
+
     [RelayCommand]
     public void Logout()
     {
@@ -80,6 +83,7 @@ public partial class TeacherViewModel : ViewModelBase
 
     public void Update()
     {
+        TeacherName = AuthService.CurrentUser!.Name;
 
         Subjects!.Clear();
         var subjectsIds = AuthService.CurrentUser!.Subjects;

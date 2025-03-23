@@ -12,7 +12,8 @@
         "8432c092-3393-418e-a476-b53cc4d86a38",
         "e66d313f-50fa-4f56-b62b-5a129f10c02f",
         "a3751aa1-4369-436c-821f-16760332a5a8",
-        "7537e269-339d-4d5f-b923-5e397051e16b"
+        "7537e269-339d-4d5f-b923-5e397051e16b",
+        "cace70b2-421f-41be-ba9e-321b1065d8f2"
       ]
     }
   ],
@@ -28,8 +29,9 @@
         "e2dafcae-4ec7-4213-b4ea-15b55d6ea3d3",
         "8f8f8aa1-bcd1-4702-8b10-fa17619a7518",
         "4f2aa42a-d5d8-4a9e-b424-2c54bda56d88",
+        "e66d313f-50fa-4f56-b62b-5a129f10c02f",
         "7537e269-339d-4d5f-b923-5e397051e16b",
-        "e66d313f-50fa-4f56-b62b-5a129f10c02f"
+        "8432c092-3393-418e-a476-b53cc4d86a38"
       ]
     }
   ],
@@ -66,7 +68,9 @@
       "Name": "Introvertology",
       "Description": "A deep dive into the art of avoiding social situations, crafting the perfect \u0022Sorry, I have plans\u0022 excuse, and mastering the art of small talk evasion.",
       "TeacherId": 1,
-      "StudentsEnrolled": []
+      "StudentsEnrolled": [
+        1
+      ]
     },
     {
       "Id": "e66d313f-50fa-4f56-b62b-5a129f10c02f",
@@ -92,6 +96,13 @@
       "StudentsEnrolled": [
         1
       ]
+    },
+    {
+      "Id": "cace70b2-421f-41be-ba9e-321b1065d8f2",
+      "Name": "A very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong subject",
+      "Description": "This also has a very loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo description!",
+      "TeacherId": 1,
+      "StudentsEnrolled": []
     }
   ]
 }
