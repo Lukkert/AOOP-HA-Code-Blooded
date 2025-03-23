@@ -40,7 +40,7 @@ public partial class StudentViewModel : ViewModelBase
 
         if (SelectedAvailableSubject == null)
         {
-            Popup.Invoke("No subject selected to enroll.");
+            Popup.Invoke("No subject selected to enroll");
             return;
         }
 
@@ -53,6 +53,8 @@ public partial class StudentViewModel : ViewModelBase
         AvailableSubjects!.Remove(SelectedAvailableSubject); // This damned line caused me 2 hours of debugging.. (It sets SelectedSubject to null..) (It was previously  above enroll subject)
 
         Update();
+
+        Popup.Invoke("Succesfully enrolled!");
     }
 
     [RelayCommand]
@@ -76,6 +78,8 @@ public partial class StudentViewModel : ViewModelBase
         EnrolledSubjects.Remove(SelectedEnrolledSubject);
 
         Update();
+
+        Popup.Invoke("Succesfully dropped out!");
     }
 
 

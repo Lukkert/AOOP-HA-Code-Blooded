@@ -43,6 +43,8 @@ public partial class TeacherViewModel : ViewModelBase
         teacher!.CreateSubject(NewSubjectName, NewSubjectDescription);
 
         Update();
+
+                Popup.Invoke("Succesfully created!");
     }
 
     [RelayCommand]
@@ -64,6 +66,8 @@ public partial class TeacherViewModel : ViewModelBase
         teacher!.EditSubject(SelectedSubject, NewSubjectName, NewSubjectDescription);
 
         Update();
+
+        Popup.Invoke("Succesfully edited!");
     }
 
     [RelayCommand]
@@ -79,6 +83,8 @@ public partial class TeacherViewModel : ViewModelBase
         teacher!.DeleteSubject(SelectedSubject);
 
         Update();
+
+        Popup.Invoke("Succesfully removed!");
     }
 
     public void Update()
