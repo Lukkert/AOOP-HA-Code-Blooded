@@ -2,7 +2,7 @@
  *Home Assignments for Advanced Object Oriented Programming at SDU*
 
  ## Assignments:
- ### Pixel Editor App
- ### University Management App
- ### ???
- ### ???
+  - ### Pixel Editor App
+  - ### University Management App
+  - ### Data Visualization App
+  - ### ???
