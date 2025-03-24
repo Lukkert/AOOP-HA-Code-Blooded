@@ -1,0 +1,108 @@
+{
+  "Teachers": [
+    {
+      "Id": 1,
+      "Name": "John",
+      "Password": "0ffe1abd1a08215353c233d6e009613e95eec4253832a761af28ff37ac5a150c",
+      "ProfilePicturePath": "Assets/Default.png",
+      "Subjects": [
+        "eeef5b03-946f-4a74-b6ff-9d7e5c34ae29",
+        "8f8f8aa1-bcd1-4702-8b10-fa17619a7518",
+        "4f2aa42a-d5d8-4a9e-b424-2c54bda56d88",
+        "8432c092-3393-418e-a476-b53cc4d86a38",
+        "e66d313f-50fa-4f56-b62b-5a129f10c02f",
+        "a3751aa1-4369-436c-821f-16760332a5a8",
+        "7537e269-339d-4d5f-b923-5e397051e16b",
+        "cace70b2-421f-41be-ba9e-321b1065d8f2"
+      ]
+    }
+  ],
+  "Students": [
+    {
+      "Id": 1,
+      "Name": "Klaus",
+      "Password": "edee29f882543b956620b26d0ee0e7e950399b1c4222f5de05e06425b4c995e9",
+      "ProfilePicturePath": "Assets/Default.png",
+      "Subjects": [
+        "eeef5b03-946f-4a74-b6ff-9d7e5c34ae29",
+        "4b20bf32-5cc3-4032-b7f7-692c4e1b6461",
+        "e2dafcae-4ec7-4213-b4ea-15b55d6ea3d3",
+        "8f8f8aa1-bcd1-4702-8b10-fa17619a7518",
+        "4f2aa42a-d5d8-4a9e-b424-2c54bda56d88",
+        "e66d313f-50fa-4f56-b62b-5a129f10c02f",
+        "7537e269-339d-4d5f-b923-5e397051e16b",
+        "8432c092-3393-418e-a476-b53cc4d86a38"
+      ]
+    }
+  ],
+  "Subjects": [
+    {
+      "Id": "eeef5b03-946f-4a74-b6ff-9d7e5c34ae29",
+      "Name": "Rocket Science",
+      "Description": "#FunRocketScienceWithJohn",
+      "TeacherId": 1,
+      "StudentsEnrolled": [
+        1
+      ]
+    },
+    {
+      "Id": "8f8f8aa1-bcd1-4702-8b10-fa17619a7518",
+      "Name": "Procrastination 101",
+      "Description": "Learn the art of waiting until the last minute to do everything. Bonus points for last-second cramming!",
+      "TeacherId": 1,
+      "StudentsEnrolled": [
+        1
+      ]
+    },
+    {
+      "Id": "4f2aa42a-d5d8-4a9e-b424-2c54bda56d88",
+      "Name": "Advanced Napping",
+      "Description": "Discover the science of power naps, strategic snoozing, and perfecting your \u0022I was just resting my eyes\u0022 excuse.",
+      "TeacherId": 1,
+      "StudentsEnrolled": [
+        1
+      ]
+    },
+    {
+      "Id": "8432c092-3393-418e-a476-b53cc4d86a38",
+      "Name": "Introvertology",
+      "Description": "A deep dive into the art of avoiding social situations, crafting the perfect \u0022Sorry, I have plans\u0022 excuse, and mastering the art of small talk evasion.",
+      "TeacherId": 1,
+      "StudentsEnrolled": [
+        1
+      ]
+    },
+    {
+      "Id": "e66d313f-50fa-4f56-b62b-5a129f10c02f",
+      "Name": "Introduction to Glazing",
+      "Description": "Self explanatory. Make sure to bring your favorite friend.",
+      "TeacherId": 1,
+      "StudentsEnrolled": [
+        1
+      ]
+    },
+    {
+      "Id": "a3751aa1-4369-436c-821f-16760332a5a8",
+      "Name": "Advanced Glazing",
+      "Description": "Ok, this one might be a bit more tough for the common folk.",
+      "TeacherId": 1,
+      "StudentsEnrolled": []
+    },
+    {
+      "Id": "7537e269-339d-4d5f-b923-5e397051e16b",
+      "Name": "Flying",
+      "Description": "Learn to fly! Includes the introduction to flying as well as intermediate techniques.",
+      "TeacherId": 1,
+      "StudentsEnrolled": [
+        1
+      ]
+    },
+    {
+      "Id": "cace70b2-421f-41be-ba9e-321b1065d8f2",
+      "Name": "A very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong subject",
+      "Description": "This also has a very loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo description!",
+      "TeacherId": 1,
+      "StudentsEnrolled": []
+    }
+  ]
+}
