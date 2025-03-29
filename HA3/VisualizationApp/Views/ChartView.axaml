@@ -1,0 +1,27 @@
+<UserControl
+    x:Class="VisualizationApp.Views.ChartView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+    xmlns:vm="clr-namespace:VisualizationApp.ViewModels"
+    Width="600"
+    Height="300"
+    x:DataType="vm:ChartViewModel">
+
+    <Grid>
+        <!--  Chart Title  -->
+        <TextBlock
+            Margin="0,10,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontSize="20"
+            Text="{Binding Title}" />
+
+        <!--  The chart itself  -->
+        <lvc:CartesianChart
+            Margin="0,25,0,0"
+            Series="{Binding Series}"
+            XAxes="{Binding XAxes}"
+            YAxes="{Binding YAxes}" />
+    </Grid>
+</UserControl>

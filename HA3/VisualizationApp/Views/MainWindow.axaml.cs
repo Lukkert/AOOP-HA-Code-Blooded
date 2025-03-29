@@ -1,4 +1,7 @@
 using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia;
+using System;
 
 namespace VisualizationApp.Views;
 
