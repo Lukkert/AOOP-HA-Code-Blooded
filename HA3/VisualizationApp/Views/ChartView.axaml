@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
     xmlns:vm="clr-namespace:VisualizationApp.ViewModels"
-    Width="600"
     Height="300"
     x:DataType="vm:ChartViewModel">
 
@@ -16,6 +15,25 @@
             VerticalAlignment="Top"
             FontSize="20"
             Text="{Binding Title}" />
+
+        <!--  Close Button  -->
+        <Button
+            Width="30"
+            Height="30"
+            Margin="5"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            Command="{Binding RemoveChart}"
+            CornerRadius="15">
+            <Image
+                Width="20"
+                Height="20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Source="/Assets/close.png"
+                Stretch="Uniform" />
+        </Button>
 
         <!--  The chart itself  -->
         <lvc:CartesianChart

@@ -8,11 +8,12 @@
     xmlns:views="clr-namespace:VisualizationApp.Views"
     xmlns:vm="using:VisualizationApp.ViewModels"
     Title="Data Visualizer"
+    Width="1000"
     Height="632"
+    MinWidth="720"
     x:DataType="vm:MainWindowViewModel"
     Background="#000000"
     FontFamily="SF Pro Text"
-    SizeToContent="Width"
     mc:Ignorable="d">
 
     <Grid>
@@ -79,6 +80,7 @@
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         Background="Transparent"
+                        Command="{Binding GenerateChart1}"
                         Content="Chart_1"
                         CornerRadius="50" />
                     <Border
@@ -92,6 +94,7 @@
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         Background="Transparent"
+                        Command="{Binding GenerateChart2}"
                         Content="Chart_2"
                         CornerRadius="50" />
                     <Border
@@ -105,6 +108,7 @@
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         Background="Transparent"
+                        Command="{Binding GenerateChart3}"
                         Content="Chart_3"
                         CornerRadius="50" />
                     <Border
@@ -118,6 +122,7 @@
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         Background="Transparent"
+                        Command="{Binding GenerateChart4}"
                         Content="Chart_4"
                         CornerRadius="50" />
                 </StackPanel>
@@ -159,24 +164,6 @@
                                     Color="White" />
                             </Border.Effect>
                             <Grid>
-                                <!--  Close Button  -->
-                                <Button
-                                    Width="30"
-                                    Height="30"
-                                    Margin="5"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Top"
-                                    Background="Transparent"
-                                    CornerRadius="15">
-                                    <Image
-                                        Width="20"
-                                        Height="20"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Source="/Assets/close.png"
-                                        Stretch="Uniform" />
-                                </Button>
-
                                 <!--  Chart View  -->
                                 <views:ChartView />
                             </Grid>
