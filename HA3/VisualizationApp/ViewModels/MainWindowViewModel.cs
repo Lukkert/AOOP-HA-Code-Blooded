@@ -14,6 +14,10 @@ namespace VisualizationApp.ViewModels;
 public partial class MainWindowViewModel : ObservableObject
 {
     public ObservableCollection<ChartViewModel> Charts { get; set; } = [];
+
+    private Stack<ChartViewModel> visibleChartStack = new();
+    private Stack<ChartViewModel> hiddenChartStack = new();
+
     private readonly VideoGameSaleQueries videoGameSaleQueries = new();
     public MainWindowViewModel()
     {
@@ -22,8 +26,44 @@ public partial class MainWindowViewModel : ObservableObject
     }
     public void RemoveChart(ChartViewModel chart)
     {
-        // Remove the chart from the collection
         Charts.Remove(chart);
+        StackManipulator.RemoveElement(visibleChartStack, chart);
+        hiddenChartStack.Push(chart);
+    }
+
+    public void CreateChart(ChartViewModel chart)
+    {
+        Charts.Add(chart);
+        visibleChartStack.Push(chart);
+    }
+
+    [RelayCommand]
+    public void Redo()
+    {
+        if (hiddenChartStack.Count > 0)
+        {
+            var chart = hiddenChartStack.Pop();
+            Charts.Add(chart);
+            visibleChartStack.Push(chart);
+        }
+    }
+
+    [RelayCommand]
+    public void Undo()
+    {
+        if (visibleChartStack.Count > 0)
+        {
+            var chart = visibleChartStack.Pop();
+            Charts.Remove(chart);
+            hiddenChartStack.Push(chart);
+        }
+    }
+
+    public void RemoteChart(ChartViewModel chart)
+    {
+        Charts.Remove(chart);
+        hiddenChartStack.Push(chart);
+        
     }
 
     [RelayCommand]
@@ -31,7 +71,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         var (names, sales) = videoGameSaleQueries.Top10_Sales_ByRegion("GLOBAL");
 
-        Charts.Add(new ChartViewModel("Top 10 Video Games by Global Sales",
+        CreateChart(new ChartViewModel("Top 10 Video Games by Global Sales",
             [
             new ColumnSeries<double>
             {
@@ -47,7 +87,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         var (names, sales) = videoGameSaleQueries.Top10_Sales_ByRegion("EU");
 
-        Charts.Add(new ChartViewModel("Top 10 Video Games by EU Sales",
+        CreateChart(new ChartViewModel("Top 10 Video Games by EU Sales",
             [
             new ColumnSeries<double>
             {
@@ -63,7 +103,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         var (names, sales) = videoGameSaleQueries.Top10_Sales_ByRegion("JP");
 
-        Charts.Add(new ChartViewModel("Top 10 Video Games by JP Sales",
+        CreateChart(new ChartViewModel("Top 10 Video Games by JP Sales",
             [
             new ColumnSeries<double>
             {
@@ -79,7 +119,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         var (names, sales) = videoGameSaleQueries.Top10_Sales_ByRegion("NA");
 
-        Charts.Add(new ChartViewModel("Top 10 Video Games by NA Sales",
+        CreateChart(new ChartViewModel("Top 10 Video Games by NA Sales",
             [
             new ColumnSeries<double>
             {
