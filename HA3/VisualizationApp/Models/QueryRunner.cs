@@ -45,7 +45,7 @@ public class VideoGameSaleQueries
         return (names, sales);
     }
 
-    // Chart 5 Show the Sales of a game by region
+    // Chart 5-7 Show the Sales of a game by region
     public (List<string> Regions, List<double> Sales) Top_Sales_ByName(string name, string platform)
     {
         // Find the game by name
