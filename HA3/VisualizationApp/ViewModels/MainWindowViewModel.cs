@@ -129,4 +129,70 @@ public partial class MainWindowViewModel : ObservableObject
             ],
             names, false));
     }
+
+    [RelayCommand]
+    public void GenerateChart5()
+    {
+        var (regions, sales) = videoGameSaleQueries.Top_Sales_ByName("Terraria", "PC");
+
+        CreateChart(new ChartViewModel("Terraria PC sales by country",
+            [
+            new LineSeries<double>
+            {
+                Values = sales,
+                Name = "Terraria PC Sales",
+            }
+            ],
+            regions, false));
+}
+
+    [RelayCommand]
+    public void GenerateChart6()
+    {
+        var (regions, sales) = videoGameSaleQueries.Top_Sales_ByName("Terraria", "PS4");
+
+        CreateChart(new ChartViewModel("Terraria PS4 sales by country",
+            [
+            new LineSeries<double>
+            {
+                Values = sales,
+                Name = "Terraria PS4 Sales",
+            }
+            ],
+            regions, false));
+}
+
+    [RelayCommand]
+    public void GenerateChart7()
+    {
+        var (regions, sales) = videoGameSaleQueries.Top_Sales_ByName("Mario Kart Wii", "Wii");
+
+        CreateChart(new ChartViewModel("Mario Kart Wii sales by country",
+            [
+            new LineSeries<double>
+            {
+                Values = sales,
+                Name = "Mario Kart Wii Sales",
+            }
+            ],
+            regions, false));
+}
+
+[RelayCommand]
+    public void GenerateChart8()
+    {
+        var (platforms, sales) = videoGameSaleQueries.Top_Platform_BySales();
+
+        CreateChart(new ChartViewModel("Top Platforms by Sales",
+            [
+            new StepLineSeries<double>
+            {
+                Values = sales,
+                Name = "Platform Sales",
+            }
+            ],
+            platforms, false));
+}
+
+
 }

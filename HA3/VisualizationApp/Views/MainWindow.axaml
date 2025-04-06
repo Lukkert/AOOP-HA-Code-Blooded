@@ -125,6 +125,62 @@
                         Command="{Binding GenerateChart4}"
                         Content="Chart_4"
                         CornerRadius="50" />
+                    <Border
+                        Width="150"
+                        Height="0.5"
+                        Background="White"
+                        CornerRadius="50" />
+                    <Button
+                        Width="200"
+                        Margin="2"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Background="Transparent"
+                        Command="{Binding GenerateChart5}"
+                        Content="Chart_5"
+                        CornerRadius="50" />
+                    <Border
+                        Width="150"
+                        Height="0.5"
+                        Background="White"
+                        CornerRadius="50" />
+                    <Button
+                        Width="200"
+                        Margin="2"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Background="Transparent"
+                        Command="{Binding GenerateChart6}"
+                        Content="Chart_6"
+                        CornerRadius="50" />
+                    <Border
+                        Width="150"
+                        Height="0.5"
+                        Background="White"
+                        CornerRadius="50" />
+                    <Button
+                        Width="200"
+                        Margin="2"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Background="Transparent"
+                        Command="{Binding GenerateChart7}"
+                        Content="Chart_7"
+                        CornerRadius="50" />
+                    <Border
+                        Width="150"
+                        Height="0.5"
+                        Background="White"
+                        CornerRadius="50" />
+                    <Button
+                        Width="200"
+                        Margin="2"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Background="Transparent"
+                        Command="{Binding GenerateChart8}"
+                        Content="Chart_8"
+                        CornerRadius="50" />
                     <!--  Undo/Redo Buttons  -->
                     <StackPanel
                         Margin="20"
