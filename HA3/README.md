@@ -3,8 +3,17 @@
 This project is a Data Visualization App built using **Avalonia** and following the **MVVM** architecture.
 
 ## 🚀 Features
+#### Charts 1-4 Column Series
+-Show top game sales in specific regions
+
+#### Charts 5-7 Line Series
+-Show top regional sales of specific games and specific platform
+
+#### Chart 8 Step Line Series
+-Show sorted global platform sales
 
 ## 🎯 Additional Task
+2. Undo/redo functionality
 
 ## 🧑💻 Contributors
 **Code Blooded ( Gene Enrick Miguel Giroy, Lukas Ekkert, Deividas Petrulis)**  
