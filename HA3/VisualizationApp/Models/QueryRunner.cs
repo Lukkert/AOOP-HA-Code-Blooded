@@ -46,28 +46,7 @@ public class VideoGameSaleQueries
     }
 
     // Chart 5-7 Show the Sales of a game by region
-    public (List<string> Regions, List<double> Sales) Top_Sales_ByName(string name, string platform)
-    {
-        // Find the game by name
-        var game = videoGameSalesData.FirstOrDefault(v => v.Name.Equals(name, StringComparison.OrdinalIgnoreCase) && v.Platform.Equals(platform, StringComparison.OrdinalIgnoreCase));
-        if (game == null)
-        {
-            throw new ArgumentException($"Game with name '{name}' and platform '{platform}' not found.");
-        }
-
-        // Get the sales data for the specified game
-        var regions = new List<string> { "Global", "NA", "EU", "JP", "Other" };
-        var sales = new List<double>
-        {
-            game.Global_Sales,
-            game.NA_Sales,
-            game.EU_Sales,
-            game.JP_Sales,
-            game.Other_Sales
-        };
-
-        return (regions, sales);
-    }
+    
 
     public (List<string> Platforms, List<double> Sales) Top_Platform_BySales()
     {
