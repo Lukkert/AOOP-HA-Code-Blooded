@@ -63,7 +63,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         Charts.Remove(chart);
         hiddenChartStack.Push(chart);
-        
+
     }
 
     [RelayCommand]
@@ -79,7 +79,7 @@ public partial class MainWindowViewModel : ObservableObject
                 Name = "Global Sales",
             }
             ],
-            names, false));
+            names));
     }
 
     [RelayCommand]
@@ -95,7 +95,7 @@ public partial class MainWindowViewModel : ObservableObject
                 Name = "EU Sales",
             }
             ],
-            names, false));
+            names));
     }
 
     [RelayCommand]
@@ -111,7 +111,7 @@ public partial class MainWindowViewModel : ObservableObject
                 Name = "JP Sales",
             }
             ],
-            names, false));
+            names));
     }
 
     [RelayCommand]
@@ -127,7 +127,7 @@ public partial class MainWindowViewModel : ObservableObject
                 Name = "NA Sales",
             }
             ],
-            names, false));
+            names));
     }
 
     [RelayCommand]
@@ -143,8 +143,8 @@ public partial class MainWindowViewModel : ObservableObject
                 Name = "Terraria PC Sales",
             }
             ],
-            regions, false));
-}
+            regions));
+    }
 
     [RelayCommand]
     public void GenerateChart6()
@@ -159,8 +159,8 @@ public partial class MainWindowViewModel : ObservableObject
                 Name = "Terraria PS4 Sales",
             }
             ],
-            regions, false));
-}
+            regions));
+    }
 
     [RelayCommand]
     public void GenerateChart7()
@@ -175,10 +175,10 @@ public partial class MainWindowViewModel : ObservableObject
                 Name = "Mario Kart Wii Sales",
             }
             ],
-            regions, false));
-}
+            regions));
+    }
 
-[RelayCommand]
+    [RelayCommand]
     public void GenerateChart8()
     {
         var (platforms, sales) = videoGameSaleQueries.Top_Platform_BySales();
@@ -191,8 +191,8 @@ public partial class MainWindowViewModel : ObservableObject
                 Name = "Platform Sales",
             }
             ],
-            platforms, false));
-}
+            platforms));
+    }
 
 
 }
